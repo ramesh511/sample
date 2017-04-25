@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Iomodulefile>
+	<part_spec_version>6</part_spec_version>
+	<io_module>
+		<id>U2251</id>
+		<name>WDT</name>
+		<revision>1.1.0</revision>
+		<doc_version>100</doc_version>
+		<last_upd_date>2015-04-23</last_upd_date>
+		<module_source>Atmel San Jose</module_source>
+		<text>Watchdog Timer</text>
+		<doc_url>http://norsvn01.norway.atmel.com/ic/avr32/ultra/digital/wdt_U2251/version/100/doc</doc_url>
+		<interrupts>
+			<interrupt>
+				<name>EW</name>
+				<irq_signal>@_intreq_ew_a</irq_signal>
+			</interrupt>
+		</interrupts>
+		<registers>
+			<register>
+				<name>CLEAR</name>
+				<number>8</number>
+				<addr_offset>0xC</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>W</access>
+				<access_property>WSYNC</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>8</size>
+								<name>CLEAR</name>
+								<access>W</access>
+								<text>Watchdog Clear</text>
+								<display>Y</display>
+								<bit_values>
+									<bit_value>
+										<value>0xA5</value>
+										<name>KEY</name>
+										<description>Clear Key</description>
+									</bit_value>
+								</bit_values>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Clear</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>CONFIG</name>
+				<number>1</number>
+				<addr_offset>0x1</addr_offset>
+				<size>8</size>
+				<reset_value>0xBB</reset_value>
+				<access>RW</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>4</size>
+								<name>PER</name>
+								<access>RW</access>
+								<text>Time-Out Period</text>
+								<display>Y</display>
+								<bit_values>
+									<bit_value>
+										<value>0x0</value>
+										<name>CYC8</name>
+										<description>8 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x1</value>
+										<name>CYC16</name>
+										<description>16 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x2</value>
+										<name>CYC32</name>
+										<description>32 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x3</value>
+										<name>CYC64</name>
+										<description>64 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x4</value>
+										<name>CYC128</name>
+										<description>128 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x5</value>
+										<name>CYC256</name>
+										<description>256 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x6</value>
+										<name>CYC512</name>
+										<description>512 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x7</value>
+										<name>CYC1024</name>
+										<description>1024 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x8</value>
+										<name>CYC2048</name>
+										<description>2048 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x9</value>
+										<name>CYC4096</name>
+										<description>4096 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0xA</value>
+										<name>CYC8192</name>
+										<description>8192 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0xB</value>
+										<name>CYC16384</name>
+										<description>16384 clock cycles</description>
+									</bit_value>
+								</bit_values>
+							</bitfield>
+							<bitfield>
+								<number>4</number>
+								<size>4</size>
+								<name>WINDOW</name>
+								<access>RW</access>
+								<text>Window Mode Time-Out Period</text>
+								<display>Y</display>
+								<bit_values>
+									<bit_value>
+										<value>0x0</value>
+										<name>CYC8</name>
+										<description>8 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x1</value>
+										<name>CYC16</name>
+										<description>16 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x2</value>
+										<name>CYC32</name>
+										<description>32 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x3</value>
+										<name>CYC64</name>
+										<description>64 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x4</value>
+										<name>CYC128</name>
+										<description>128 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x5</value>
+										<name>CYC256</name>
+										<description>256 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x6</value>
+										<name>CYC512</name>
+										<description>512 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x7</value>
+										<name>CYC1024</name>
+										<description>1024 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x8</value>
+										<name>CYC2048</name>
+										<description>2048 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x9</value>
+										<name>CYC4096</name>
+										<description>4096 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0xA</value>
+										<name>CYC8192</name>
+										<description>8192 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0xB</value>
+										<name>CYC16384</name>
+										<description>16384 clock cycles</description>
+									</bit_value>
+								</bit_values>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Configuration</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>CTRLA</name>
+				<number>0</number>
+				<addr_offset>0x0</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<access_property>WPROT,WSYNC</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>7</number>
+								<size>1</size>
+								<name>ALWAYSON</name>
+								<access>RW</access>
+								<text>Always-On</text>
+								<display>Y</display>
+							</bitfield>
+							<bitfield>
+								<number>1</number>
+								<size>1</size>
+								<name>ENABLE</name>
+								<access>RW</access>
+								<text>Enable</text>
+								<display>Y</display>
+							</bitfield>
+							<bitfield>
+								<number>2</number>
+								<size>1</size>
+								<name>WEN</name>
+								<access>RW</access>
+								<text>Watchdog Timer Window Mode Enable</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Control</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>EWCTRL</name>
+				<number>2</number>
+				<addr_offset>0x2</addr_offset>
+				<size>8</size>
+				<reset_value>0x0B</reset_value>
+				<access>RW</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>4</size>
+								<name>EWOFFSET</name>
+								<access>RW</access>
+								<text>Early Warning Interrupt Time Offset</text>
+								<display>Y</display>
+								<bit_values>
+									<bit_value>
+										<value>0x0</value>
+										<name>CYC8</name>
+										<description>8 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x1</value>
+										<name>CYC16</name>
+										<description>16 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x2</value>
+										<name>CYC32</name>
+										<description>32 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x3</value>
+										<name>CYC64</name>
+										<description>64 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x4</value>
+										<name>CYC128</name>
+										<description>128 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x5</value>
+										<name>CYC256</name>
+										<description>256 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x6</value>
+										<name>CYC512</name>
+										<description>512 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x7</value>
+										<name>CYC1024</name>
+										<description>1024 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x8</value>
+										<name>CYC2048</name>
+										<description>2048 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0x9</value>
+										<name>CYC4096</name>
+										<description>4096 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0xA</value>
+										<name>CYC8192</name>
+										<description>8192 clock cycles</description>
+									</bit_value>
+									<bit_value>
+										<value>0xB</value>
+										<name>CYC16384</name>
+										<description>16384 clock cycles</description>
+									</bit_value>
+								</bit_values>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Early Warning Interrupt Control</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTENCLR</name>
+				<number>3</number>
+				<addr_offset>0x4</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>1</size>
+								<name>EW</name>
+								<access>RW</access>
+								<text>Early Warning Interrupt Enable</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Interrupt Enable Clear</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTENSET</name>
+				<number>4</number>
+				<addr_offset>0x5</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>1</size>
+								<name>EW</name>
+								<access>RW</access>
+								<text>Early Warning Interrupt Enable</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Interrupt Enable Set</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTFLAG</name>
+				<number>5</number>
+				<addr_offset>0x6</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>1</size>
+								<name>EW</name>
+								<access>RW</access>
+								<text>Early Warning</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Interrupt Flag Status and Clear</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>SYNCBUSY</name>
+				<number>7</number>
+				<addr_offset>0x8</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>R</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>3</number>
+								<size>1</size>
+								<name>ALWAYSON</name>
+								<access>R</access>
+								<text>Always-On Busy</text>
+								<display>Y</display>
+							</bitfield>
+							<bitfield>
+								<number>4</number>
+								<size>1</size>
+								<name>CLEAR</name>
+								<access>R</access>
+								<text>Clear Busy</text>
+								<display>Y</display>
+							</bitfield>
+							<bitfield>
+								<number>1</number>
+								<size>1</size>
+								<name>ENABLE</name>
+								<access>R</access>
+								<text>Enable Busy</text>
+								<display>Y</display>
+							</bitfield>
+							<bitfield>
+								<number>2</number>
+								<size>1</size>
+								<name>WEN</name>
+								<access>R</access>
+								<text>Window Enable Busy</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Synchronization Busy</text>
+				<memory_range>base</memory_range>
+			</register>
+		</registers>
+		<signals>
+			<signal>
+				<name>@_intreq_ew_a</name>
+				<direction>OUT</direction>
+				<type>IRQA</type>
+				<appearance>INTERNAL</appearance>
+				<presentation>WDT Early Warning Interrupt</presentation>
+			</signal>
+			<signal>
+				<name>@_req_clk_apb</name>
+				<direction>OUT</direction>
+				<type>output</type>
+				<appearance>INTERNAL</appearance>
+				<presentation>APB Clock Request</presentation>
+			</signal>
+			<signal>
+				<name>clk_apb_@</name>
+				<direction>IN</direction>
+				<type>clock</type>
+				<appearance>INTERNAL</appearance>
+				<presentation>APB Bus Clock</presentation>
+			</signal>
+			<signal>
+				<name>clk_gen_@</name>
+				<direction>IN</direction>
+				<type>clock</type>
+				<appearance>INTERNAL</appearance>
+				<presentation>WDT Generic Clock</presentation>
+			</signal>
+		</signals>
+		<signal_groups/>
+		<parameters>
+			<parameter>
+				<name>FUSES_ALWAYSON</name>
+				<value>0</value>
+				<text>WDT Always On</text>
+				<public>true</public>
+				<config>FUSES</config>
+			</parameter>
+			<parameter>
+				<name>FUSES_ENABLE</name>
+				<value>0</value>
+				<text>WDT Enable</text>
+				<public>true</public>
+				<config>FUSES</config>
+			</parameter>
+			<parameter>
+				<name>FUSES_EWOFFSET</name>
+				<text>WDT Early Warning Offset</text>
+				<public>true</public>
+				<config>FUSES</config>
+			</parameter>
+			<parameter>
+				<name>FUSES_PER</name>
+				<text>WDT Period</text>
+				<public>true</public>
+				<config>FUSES</config>
+			</parameter>
+			<parameter>
+				<name>FUSES_WEN</name>
+				<text>WDT Window Mode Enable</text>
+				<public>true</public>
+				<config>FUSES</config>
+			</parameter>
+			<parameter>
+				<name>FUSES_WINDOW</name>
+				<text>WDT Window</text>
+				<public>true</public>
+				<config>FUSES</config>
+			</parameter>
+			<parameter>
+				<name>GCLK_ID</name>
+				<text>Index of Generic Clock</text>
+				<public>true</public>
+				<config>GCLK</config>
+			</parameter>
+		</parameters>
+		<memory_ranges>
+			<memory_range>
+				<name>base</name>
+				<size>0x10</size>
+			</memory_range>
+		</memory_ranges>
+	</io_module>
+</Iomodulefile>

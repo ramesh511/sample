@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Iomodulefile">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="part_spec_version" type="xs:int"/>
+      <xs:element ref="io_module" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="type_01">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[01]?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_8163264">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="16"/>
+      <xs:enumeration value="32"/>
+      <xs:enumeration value="64"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_boolean">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="false"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_hex">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="((0x)?[0-9a-fA-F]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_hex_or_x">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="((0x)?[0-9a-fA-FX]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_YN">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="N"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="type_YNLYLNLA">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Y"/>
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="LY"/>
+      <xs:enumeration value="LN"/>
+      <xs:enumeration value="LA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="access">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="R"/>
+      <xs:enumeration value="W"/>
+      <xs:enumeration value="RW"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="access_property">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EPROT"/>
+      <xs:enumeration value="EPROT,RSYNC"/>
+      <xs:enumeration value="EPROT,RSYNC,WPROT"/>
+      <xs:enumeration value="EPROT,RSYNC,WPROT,WSYNC"/>
+      <xs:enumeration value="EPROT,RSYNC,WSYNC"/>
+      <xs:enumeration value="EPROT,WPROT"/>
+      <xs:enumeration value="EPROT,WPROT,WSYNC"/>
+      <xs:enumeration value="EPROT,WSYNC"/>
+      <xs:enumeration value="RSYNC"/>
+      <xs:enumeration value="RSYNC,WPROT"/>
+      <xs:enumeration value="RSYNC,WPROT,WSYNC"/>
+      <xs:enumeration value="RSYNC,WSYNC"/>
+      <xs:enumeration value="WPROT"/>
+      <xs:enumeration value="WPROT,WSYNC"/>
+      <xs:enumeration value="WSYNC"/>
+      <xs:enumeration value="CLR_RD"/>
+
+      <xs:enumeration value="E_PROT"/>
+      <xs:enumeration value="R_SYNC"/>
+      <xs:enumeration value="W_PROT"/>
+      <xs:enumeration value="W_PROT_SYNC"/>
+      <xs:enumeration value="W_SYNC"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="appearance">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internal"/>
+      <xs:enumeration value="external"/>
+      <xs:enumeration value="INTERNAL"/>
+      <xs:enumeration value="EXTERNAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="bit_value">
+    <xs:complexType> <xs:all>
+      <xs:element name="value" type="type_hex_or_x"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="from" type="type_hex" minOccurs="0"/>
+      <xs:element name="to" type="type_hex" minOccurs="0"/>
+      <xs:element name="display" type="type_YNLYLNLA" minOccurs="0"/>
+      <xs:element name="display_param" type="xs:string" minOccurs="0"/>
+    </xs:all> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bit_values">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="bit_value" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bitfield">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="number" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element name="size_param" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="lsb" type="xs:string" minOccurs="0"/>
+      <xs:element name="count" type="xs:string" minOccurs="0"/>
+      <xs:element name="spacing" type="xs:string" minOccurs="0"/>
+      <xs:element name="access" type="access" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="display" type="type_YNLYLNLA" minOccurs="0"/>
+      <xs:element ref="bit_values" minOccurs="0"/>
+      <xs:element ref="datasheet" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bitfields">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="bitfield" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="constant">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="constants">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="constant" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="datasheet">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="intro" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="para" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="direction">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IN"/>
+      <xs:enumeration value="OUT"/>
+      <xs:enumeration value="INOUT"/>
+      <xs:enumeration value="in"/>
+      <xs:enumeration value="out"/>
+      <xs:enumeration value="inout"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="function">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="enable_signal" type="xs:string"/>
+      <xs:element name="priority" type="xs:int"/>
+      <xs:element name="output" type="xs:string" minOccurs="0"/>
+      <xs:element name="output_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="pullup_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="pulldown_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="open_drain_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="slewrate_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drivestrength0_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drivestrength1_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drive_strength0_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drive_strength1_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="input_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="schmitt_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="presentation" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="display" type="type_YN" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="interrupt">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="irq_signal" type="xs:string"/>
+      <xs:element name="enable_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="enable_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="enable_value" type="type_01" minOccurs="0"/>
+      <xs:element name="disable_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="disable_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="disable_value" type="type_01" minOccurs="0"/>
+      <xs:element name="mask_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="mask_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="mask_value" type="type_01" minOccurs="0"/>
+      <xs:element name="status_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="status_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="status_value" type="type_01" minOccurs="0"/>
+      <xs:element name="clear_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="clear_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="clear_value" type="type_01" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="interrupts">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="interrupt" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="io_module">
+    <xs:complexType> <xs:all>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="revision" type="xs:string" minOccurs="0"/>
+      <xs:element name="doc_version" type="xs:string" minOccurs="0"/>
+      <xs:element name="last_upd_date" type="xs:date" minOccurs="0"/>
+      <xs:element name="module_source" type="xs:string" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+      <xs:element name="doc_url" type="xs:string" minOccurs="0"/>
+      <xs:element name="public_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="rtl_name" type="xs:string" minOccurs="0"/>
+      <xs:element ref="datasheet" minOccurs="0"/>
+      <xs:element ref="interrupts" minOccurs="0"/>
+      <xs:element ref="ip_modes" minOccurs="0"/>
+      <xs:element ref="registers" minOccurs="0"/>
+      <xs:element ref="register_groups" minOccurs="0"/>
+      <xs:element ref="signals" minOccurs="0"/>
+      <xs:element ref="signal_groups" minOccurs="0"/>
+      <xs:element ref="parameters" minOccurs="0"/>
+      <xs:element ref="constants" minOccurs="0"/>
+      <xs:element ref="memory_ranges" minOccurs="0"/>
+    </xs:all> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ip_mode">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+      <xs:element name="mode_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="mode_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="mode_value" type="xs:string" minOccurs="0"/>
+      <xs:element name="display_param" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+                              
+  <xs:element name="ip_modes">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="ip_mode" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="memory_range">
+    <xs:complexType mixed="true"> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="size" type="type_hex" minOccurs="0"/>
+      <xs:element name="align" type="type_hex" minOccurs="0"/>
+      <xs:element name="section" type="xs:string" minOccurs="0"/>
+      <xs:element name="address" type="type_hex" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="memory_ranges">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="memory_range" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="mode">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="mode_reg" type="xs:string" minOccurs="0"/>
+      <xs:element name="mode_bitfield" type="xs:string" minOccurs="0"/>
+      <xs:element name="mode_value" type="type_hex" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+      <xs:element name="display" type="type_YNLYLNLA" minOccurs="0"/>
+      <xs:element ref="bitfields"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="modes">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="mode" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="parameter">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+      <xs:element name="size" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="public" type="type_boolean"/>
+      <xs:element name="config" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="parameters">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="property">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="register">
+    <xs:complexType> <xs:all>
+      <xs:element name="ip_mode" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="number" type="xs:int" minOccurs="0"/>
+      <xs:element name="addr_offset" type="type_hex" minOccurs="0"/>
+      <xs:element name="size" type="type_8163264" minOccurs="0"/>
+      <xs:element name="reset_value" type="xs:string" minOccurs="0"/>
+      <xs:element name="reset_value_mask" type="xs:string" minOccurs="0"/>
+      <xs:element name="access" type="access" minOccurs="0"/>
+      <xs:element name="access_property" type="access_property" minOccurs="0"/>
+      <xs:element ref="modes" minOccurs="0"/>
+      <xs:element name="text" type="xs:string" minOccurs="0"/>
+      <xs:element name="description" type="xs:string" minOccurs="0"/>
+      <xs:element name="display" type="type_YNLYLNLA" minOccurs="0"/>
+      <xs:element name="fuse" type="type_YN" minOccurs="0"/>
+      <xs:element name="extensible" type="type_YN" minOccurs="0"/>
+      <xs:element name="memory_range" type="xs:string" minOccurs="0"/>
+      <xs:element name="count" type="type_hex" minOccurs="0"/>
+      <xs:element name="count_parameter" type="xs:string" minOccurs="0"/>
+      <xs:element ref="datasheet" minOccurs="0"/>
+    </xs:all> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="register_group">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="section" type="type_YN" minOccurs="0"/>
+      <xs:element name="start" type="xs:string"/>
+      <xs:element name="strip_suffix" type="xs:string" minOccurs="0"/>
+      <xs:element name="size" type="type_hex"/>
+      <xs:element name="count" type="type_hex"/>
+      <xs:element name="count_parameter" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="register_groups">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="register_group" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="registers">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="register" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="signal">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="direction" type="direction"/>
+      <xs:element name="type" type="xs:string"/>
+      <xs:element name="appearance" type="appearance"/>
+      <xs:element name="width_from" type="xs:string" minOccurs="0"/>
+      <xs:element name="width_to" type="xs:string" minOccurs="0"/>
+      <xs:element name="muxable" type="type_boolean" minOccurs="0"/>
+      <xs:element name="test_function" type="test_function" minOccurs="0"/>
+      <xs:element name="presentation" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="signal_group">
+    <xs:complexType> <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="output" type="xs:string" minOccurs="0"/>
+      <xs:element name="input" type="xs:string" minOccurs="0"/>
+      <xs:element name="output_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="pullup_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="pulldown_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="open_drain_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="slewrate_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drivestrength0_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drivestrength1_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drive_strength0_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="drive_strength1_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="input_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="schmitt_enable" type="xs:string" minOccurs="0"/>
+      <xs:element name="function_descr" type="xs:string" minOccurs="0"/>
+      <xs:element name="function_type" type="xs:string" minOccurs="0"/>
+      <xs:element name="active_level" type="xs:string" minOccurs="0"/>
+      <xs:element name="comments" type="xs:string" minOccurs="0"/>
+      <xs:element name="presentation" type="xs:string" minOccurs="0"/>
+      <xs:element name="analogpin" type="xs:string" minOccurs="0"/>
+      <xs:element name="anasignal" type="xs:string" minOccurs="0"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="signal_groups">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="signal_group" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:element name="signals">
+    <xs:complexType> <xs:sequence>
+      <xs:element ref="signal" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence> </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="test_function">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="scan_clock"/>
+      <xs:enumeration value="scan_enable"/>
+      <xs:enumeration value="scan_in"/>
+      <xs:enumeration value="scan_out"/>
+      <xs:enumeration value="scan_alt_input"/>
+      <xs:enumeration value="scan_ref_clock"/>
+      <xs:enumeration value="scan_pll_bypass"/>
+      <xs:enumeration value="scan_pll_reset"/>
+      <xs:enumeration value="scan_pll_lock"/>
+      <xs:enumeration value="scan_config_mode"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

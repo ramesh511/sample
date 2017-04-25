@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Iomodulefile>
+	<part_spec_version>6</part_spec_version>
+	<io_module>
+		<id>U2120</id>
+		<name>PAC</name>
+		<revision>1.2.0</revision>
+		<doc_version/>
+		<last_upd_date>2013-11-14</last_upd_date>
+		<module_source>Atmel Nantes</module_source>
+		<text>Peripheral Access Controller</text>
+		<interrupts>
+			<interrupt>
+				<name>ERR</name>
+				<irq_signal>@_intreq_err</irq_signal>
+			</interrupt>
+		</interrupts>
+		<registers>
+			<register>
+				<name>EVCTRL</name>
+				<addr_offset>0x04</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>1</size>
+								<name>ERREO</name>
+								<access>RW</access>
+								<text>Peripheral acess error event output</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Event control</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTENCLR</name>
+				<addr_offset>0x08</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>1</size>
+								<name>ERR</name>
+								<access>RW</access>
+								<text>Peripheral access error interrupt disable</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Interrupt enable clear</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTENSET</name>
+				<addr_offset>0x09</addr_offset>
+				<size>8</size>
+				<reset_value>0x00</reset_value>
+				<access>RW</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>0</number>
+								<size>1</size>
+								<name>ERR</name>
+								<access>RW</access>
+								<text>Peripheral access error interrupt enable</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Interrupt enable set</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTFLAGA</name>
+				<addr_offset>0x14</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge A</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;0</count_parameter>
+			</register>
+			<register>
+				<name>INTFLAGAHB</name>
+				<addr_offset>0x10</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Bridge interrupt flag status</text>
+				<memory_range>base</memory_range>
+			</register>
+			<register>
+				<name>INTFLAGB</name>
+				<addr_offset>0x18</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge B</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;1</count_parameter>
+			</register>
+			<register>
+				<name>INTFLAGC</name>
+				<addr_offset>0x1C</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge C</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;2</count_parameter>
+			</register>
+			<register>
+				<name>INTFLAGD</name>
+				<addr_offset>0x20</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge D</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;3</count_parameter>
+			</register>
+			<register>
+				<name>INTFLAGE</name>
+				<addr_offset>0x24</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge E</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;4</count_parameter>
+			</register>
+			<register>
+				<name>INTFLAGF</name>
+				<addr_offset>0x28</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge F</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;5</count_parameter>
+			</register>
+			<register>
+				<name>INTFLAGG</name>
+				<addr_offset>0x30</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral interrupt flag status - Bridge G</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;6</count_parameter>
+			</register>
+			<register>
+				<name>STATUSA</name>
+				<addr_offset>0x34</addr_offset>
+				<reset_value>0x00010000</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge A</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;0</count_parameter>
+			</register>
+			<register>
+				<name>STATUSB</name>
+				<addr_offset>0x38</addr_offset>
+				<reset_value>0x00000002</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge B</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;1</count_parameter>
+			</register>
+			<register>
+				<name>STATUSC</name>
+				<addr_offset>0x3C</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge C</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;2</count_parameter>
+			</register>
+			<register>
+				<name>STATUSD</name>
+				<addr_offset>0x40</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge D</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;3</count_parameter>
+			</register>
+			<register>
+				<name>STATUSE</name>
+				<addr_offset>0x44</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge E</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;4</count_parameter>
+			</register>
+			<register>
+				<name>STATUSF</name>
+				<addr_offset>0x48</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge F</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;5</count_parameter>
+			</register>
+			<register>
+				<name>STATUSG</name>
+				<addr_offset>0x50</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>R</access>
+				<access_property>WPROT</access_property>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields/>
+					</mode>
+				</modes>
+				<text>Peripheral write protection status - Bridge G</text>
+				<memory_range>base</memory_range>
+				<count_parameter>HPB_NUM&gt;6</count_parameter>
+			</register>
+			<register>
+				<name>WRCTRL</name>
+				<addr_offset>0x00</addr_offset>
+				<reset_value>0x00000000</reset_value>
+				<access>RW</access>
+				<modes>
+					<mode>
+						<name>Default mode</name>
+						<bitfields>
+							<bitfield>
+								<number>16</number>
+								<size>8</size>
+								<name>KEY</name>
+								<access>RW</access>
+								<text>Peripheral access control key</text>
+								<display>Y</display>
+								<bit_values>
+									<bit_value>
+										<value>0</value>
+										<name>OFF</name>
+										<description>No action</description>
+									</bit_value>
+									<bit_value>
+										<value>1</value>
+										<name>CLR</name>
+										<description>Clear protection</description>
+									</bit_value>
+									<bit_value>
+										<value>2</value>
+										<name>SET</name>
+										<description>Set protection</description>
+									</bit_value>
+									<bit_value>
+										<value>3</value>
+										<name>SETLCK</name>
+										<description>Set and lock protection</description>
+									</bit_value>
+								</bit_values>
+							</bitfield>
+							<bitfield>
+								<number>0</number>
+								<size>16</size>
+								<name>PERID</name>
+								<access>RW</access>
+								<text>Peripheral identifier</text>
+								<display>Y</display>
+							</bitfield>
+						</bitfields>
+					</mode>
+				</modes>
+				<text>Write control</text>
+				<memory_range>base</memory_range>
+			</register>
+		</registers>
+		<signals>
+			<signal>
+				<name>@_evsys_accerr_evt</name>
+				<direction>OUT</direction>
+				<type>EVENT</type>
+				<appearance>INTERNAL</appearance>
+			</signal>
+			<signal>
+				<name>@_intreq_err</name>
+				<direction>OUT</direction>
+				<type>IRQ</type>
+				<appearance>INTERNAL</appearance>
+			</signal>
+			<signal>
+				<name>@_req_clk_apb</name>
+				<direction>OUT</direction>
+				<type>output</type>
+				<appearance>INTERNAL</appearance>
+			</signal>
+			<signal>
+				<name>clk_ahb_@</name>
+				<direction>IN</direction>
+				<type>clock</type>
+				<appearance>INTERNAL</appearance>
+			</signal>
+			<signal>
+				<name>clk_apb_@</name>
+				<direction>IN</direction>
+				<type>clock</type>
+				<appearance>INTERNAL</appearance>
+			</signal>
+		</signals>
+		<signal_groups/>
+		<parameters>
+			<parameter>
+				<name>CLK_AHB_DOMAIN</name>
+				<text>Clock domain of AHB clock</text>
+				<public>true</public>
+				<config>DESIGN</config>
+			</parameter>
+			<parameter>
+				<name>CLK_AHB_ID</name>
+				<value>15</value>
+				<text>AHB clock index</text>
+				<public>true</public>
+				<config>AHB_CLK</config>
+			</parameter>
+			<parameter>
+				<name>HMATRIX0_SLAVE_SIZE</name>
+				<text>Number of slaves on HMATRIXB instance 0</text>
+				<public>false</public>
+				<config>AUTOGEN</config>
+			</parameter>
+			<parameter>
+				<name>HMATRIX1_IMPLEMENTED</name>
+				<value>0</value>
+				<public>false</public>
+				<config>CONFIG</config>
+			</parameter>
+			<parameter>
+				<name>HMATRIX1_SLAVE_SIZE</name>
+				<text>Number of slaves on HMATRIXB instance 1</text>
+				<description>if no slave in matrix, then set size=1</description>
+				<public>false</public>
+				<config>AUTOGEN</config>
+			</parameter>
+			<parameter>
+				<name>HPB_NUM</name>
+				<text>Number of bridges AHB/APB</text>
+				<public>true</public>
+				<config>CONFIG</config>
+			</parameter>
+		</parameters>
+		<memory_ranges>
+			<memory_range>
+				<name>base</name>
+				<size>0x80</size>
+			</memory_range>
+		</memory_ranges>
+	</io_module>
+</Iomodulefile>
